@@ -125,6 +125,7 @@ print first_song_info.loc[first_song_info.is_rap,['word_count','song']].sort_val
 
 #%%
 #Growth of rap by year
+
 byyear = first_song_info.groupby(by=['year'])
 totalalbums = byyear['song'].count()
 totalrap = byyear['is_rap'].sum()
@@ -152,6 +153,7 @@ plt.savefig('RapItalia_plot_1.png', dpi=200,format=format,bbox_inches="tight")
 
 #%%
 #Growth of english
+
 byyearlang = first_song_info.groupby(by=['year','language'])
 languagereport = byyearlang['album'].count().unstack()
 languagereport.loc[:,'other'] = np.nansum(languagereport.loc[:,['french','german','portuguese','spanish']],1)
